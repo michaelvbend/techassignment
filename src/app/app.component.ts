@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {EmiCalculatorComponent} from "./emi-calculator/emi-calculator.component";
 
 @Component({
   selector: 'app-root',

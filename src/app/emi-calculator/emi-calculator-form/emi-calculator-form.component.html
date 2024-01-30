@@ -1,0 +1,50 @@
+<form [formGroup]="emiCalculatorForm" (ngSubmit)="onSubmit()">
+  <div class="mb-3">
+    <label for="loan" class="form-label">Loan</label>
+    <input
+      type="number"
+      class="form-control"
+      id="loan"
+      formControlName="loan"
+    />
+    <span *ngIf="validateFormControl('loan')" class="help-block text-danger">Please enter a positive number.</span>
+  </div>
+  <div class="mb-3">
+    <label for="interest" class="form-label">Yearly Interest Rate</label>
+    <input
+      type="number"
+      class="form-control"
+      id="interest"
+      formControlName="interest"
+    />
+    <span *ngIf="validateFormControl('interest')" class="help-block text-danger">Please enter a number between 0 and 100.</span>
+
+  </div>
+  <div class="mb-3">
+    <label for="term" class="form-label">Loan Term (Years)</label>
+    <input
+      type="number"
+      class="form-control"
+      id="term"
+      formControlName="term"
+    />
+    <span *ngIf="validateFormControl('term')" class="help-block text-danger">Please enter a number between 0 and 30.</span>
+
+  </div>
+  <button
+    type="submit"
+    class="btn btn-primary me-2">
+    Calculate
+  </button>
+  <button
+    (click)="resetForm()"
+    type="button"
+    class="btn btn-secondary">
+    Reset
+  </button>
+
+</form>
+<div *ngIf="isCalculating" class="spinner-border mt-1" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
+<p>{{error}}</p>
